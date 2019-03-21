@@ -1,0 +1,64 @@
+
+== на прям щас ==
+if (mode == '1') {
+} elseif (mode == '2') {
+}
+
+$mode = $_GET['mode'];
+switch ($mode) {
+    case '1': вызвать обработчик страницы 1;
+    break;
+
+    case '2': вызвать обработчик страницы 1;
+    break;
+}
+
+
+вызвать обработчик:
+$controller = include 'обработчик'
+echo $controller(data)
+exit()
+
+
+тело контроллера
+data
+business-logic
+return renderTamplate()
+
+
+$mode? -> controller -> logic -> render -> echo
+mode==add
+    -> addController
+    -> массив ошибок, проверка ошибок
+    -> render(имя ADD шаблона, параметры)
+    -> результат положить в $content
+    -> вывести
+
+
+MVC: что и зачем
+разделение логики и отвественности
+тонкие/толстые модели/контроллеры
+
+db.csv
+
+чтение-запись добавленных лотов
+
+
+== на будущее ==
+index.php /
+pages
+    catalog.php /pages/catalog.php
+    form.php /pages/form.php <form method="post" action="forms/email.php">
+    success.php /pages/success.php "Ok"
+
+forms
+    email.php /forms/email.php
+        $fields = $_POST
+        var_dump($fields)
+
+        save_to_file()
+
+        header("Location: http://www.yourwebsite.com/pages/success.php")  redirect('/pages/success.php')
+
+
+

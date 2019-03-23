@@ -20,10 +20,10 @@ $categories
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
-        <a class="main-header__logo">
+        <a class=" button" href="index.php">
             <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
-        <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
+        <form class="main-header__search" method="get" action="index.php?mode=search">
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
@@ -42,10 +42,10 @@ $categories
             <? else: ?>
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
-                        <a href="#">Регистрация</a>
+                        <a href="index.php?mode=signup">Регистрация</a>
                     </li>
                     <li class="user-menu__item">
-                        <a href="#">Вход</a>
+                        <a href="index.php?mode=login">Вход</a>
                     </li>
                 </ul>
             <? endif; ?>
@@ -63,7 +63,7 @@ $categories
 
             <? foreach ($categories as $key => $val) : ?>
                 <li class="nav__item">
-                    <a href="all-lots.html"><?= $val; ?></a>
+                    <a href="index.php?mode=all"><?= $val; ?></a>
                 </li>
                 <? endforeach; ?>
         </ul>
@@ -107,7 +107,7 @@ $categories
                 </svg>
             </a>
         </div>
-        <a class="main-footer__add-lot button" href="add-lot.html">Добавить лот</a>
+        <a class="main-footer__add-lot button" href="index.php?mode=add">Добавить лот</a>
         <div class="main-footer__developed-by">
             <span class="visually-hidden">Разработано:</span>
             <a class="logo-academy" href="https://htmlacademy.ru/intensive/php">HTML Academy

@@ -11,7 +11,7 @@ $catalog
 
         <? foreach ($categories as $key => $val): ?>
             <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="all-lots.html"><?= $val; ?></a>
+                <a class="promo__link" href="index.php?mode=all"><?= $val; ?></a>
             </li>
         <? endforeach; ?>
 
@@ -51,8 +51,6 @@ $catalog
                             $minutes = floor(($second_to_midnight % 3600) / 60);
 
                             echo("$hours чсов $minutes минут");
-                            //$curtime = date('H:i:s');
-                            //print("Текущее время: $curtime<br>")
                             ?>
                         </div>
                     </div>

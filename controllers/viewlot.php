@@ -1,14 +1,15 @@
 <?php
-function viewlot($catalog)
+function viewlot()
 {
+    $bets = include 'bets.php';
+    $catalog = include 'arr.php';
     $lot = null;                            // Тогда записываем в переменную $lot значение null
 
     if (!isset($_GET['lot_id'])) {
-       http_response_code(404);
-       return 'not found';
+        http_response_code(404);
+        return 'not found';
     }
 
-//    if (isset($_GET['lot_id'])) {           // если $_GET['lot_id'] существует
     $lot_id = $_GET['lot_id'];          // тогда присваиваем переменной $lot_id = $_GET['lot_id']
 
     foreach ($catalog as $item) {       // проходимся по массиву каталог
@@ -23,5 +24,5 @@ function viewlot($catalog)
         return 'not found';
     }
 
-    return renderTamplate('templates/lot.php', compact('lot'));
+    return renderTamplate('templates/lot.php', compact('lot', 'bets'));
 }

@@ -7,18 +7,18 @@
  *
  */
 
-function is_date($date_string)
+function is_date($date_string)                      // Функция для проверки даты
 {
-    $date_array = explode('-', $date_string);
+    $date_array = explode('-', $date_string);       // explode - рзбивает строку с помощью разделителя '-'
 
-    if (count($date_array) !== 3) {
+    if (count($date_array) !== 3) {                 // count — Подсчитывает количество элементов массива или что-то в объекте. false если не равно 3.
         return false;
     } else {
-        $year = $date_array[0];
+        $year = $date_array[0];                     // иначе создаем переменные для записи элементов массива
         $month = $date_array[1];
         $day = $date_array[2];
 
-        return checkdate($month, $day, $year);
+        return checkdate($month, $day, $year);      // checkdate - проверяет корректность даты по григорианскому календарю. Е
     }
 }
 
@@ -32,18 +32,6 @@ function get_lot_form_required_validation_rules()       // Возвращает 
         'lot-step' => 'Введи шаг ставки',
         'lot-date' => 'Введите дату окончания лота'
     ];
-//    $errors['message'] = [
-//        'error' => 'Введите описание лота'
-//    ];
-//    $errors['lot-rate'] = [
-//        'error' => 'Введите начальную цену'
-//    ];
-//    $errors['lot-step'] = [
-//        'error' => 'Введите шаг ставки'
-//    ];
-//    $errors['lot-date'] = [
-//        'error' => 'Введите дату окончания лота'
-//    ];
 }
 
 function get_lot_form_numeric_validation_rules()
@@ -63,24 +51,23 @@ function get_lot_form_date_validation_rules()
 
 function addlot()
 {
-    $errors = [];                                                       // пустой массив с ошибками
-    $data = [];                                                       // пустой массив с ошибками
+    $errors = [];                                                                   // пустой массив с ошибками
+    $data = [];                                                                     // пустой массив с ошибками
 
-    $required_validation_rules = get_lot_form_required_validation_rules();        // определяем функцию которая возвращает массив с ошибками
+    $required_validation_rules = get_lot_form_required_validation_rules();          // определяем функцию которая возвращает массив с ошибками
     $numeric_validation_rules = get_lot_form_numeric_validation_rules();
     $get_lot_form_date_validation_rules = get_lot_form_date_validation_rules();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {                        // Если метод для запроса страницы POST
-        $data = $_POST;                                                 // Переменная date содержит переданный ассоциативный массив данных
-        foreach ($data as $key => $value) {                             //
-            if (isset($required_validation_rules[$key]) && empty($value)) {                                        // Empty возвращает true если переменная пустая
-                $errors[$key] = $required_validation_rules[$key];     // записываем в массив errors содержимое массива $empty_field_error_texts. пример
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {                                    // Если метод для запроса страницы POST
+        $data = $_POST;                                                             // Переменная date содержит переданный ассоциативный массив данных
+        foreach ($data as $key => $value) {
+            if (empty($value) && isset($required_validation_rules[$key])) {         // Empty возвращает true если переменная пустая
+                $errors[$key] = $required_validation_rules[$key];                   // записываем в массив errors содержимое массива $empty_field_error_texts.
             }
-
-            if (isset($numeric_validation_rules[$key]) && !is_numeric($value)) {
+            if (!is_numeric($value) && isset($numeric_validation_rules[$key])) {
                 $errors[$key] = $numeric_validation_rules[$key];
             }
-            if (isset($get_lot_form_date_validation_rules[$key]) && !is_date($value)) {
+            if (!is_date($value) && isset($get_lot_form_date_validation_rules[$key])) {
                 $errors[$key] = $get_lot_form_date_validation_rules[$key];
             }
         }
@@ -89,55 +76,3 @@ function addlot()
     return renderTamplate('templates/add-lot.php', compact('errors', 'data'));
 }
 
-//    $lot = [];
-//    $empty_errors = [
-//        'name' => [],
-//        'category' => [],
-//        'message' => [],
-//        'price' => [],
-//        'step' => [],
-//        'date' => []
-//    ];
-//    $errors = $empty_errors;
-//
-//    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//        $lot = $_POST;
-//        if (empty($lot['name'])) {
-//            $errors['name'][] = 'Введите наименование лота';
-//        }
-//        if (empty($lot['category'])) {
-//            $errors['category'][] = 'Выберите категорию';
-//        }
-//        if (empty($lot['message'])) {
-//            $errors['message'][] = 'Введите email';
-//        }
-//        if (empty($lot['price'])) {
-//            $errors['price'][] = 'Введите начальную цену лота';
-//        } else {
-//            if (!is_numeric($lot['price'])) {
-//                $errors['price'][] = 'Это должно быть число';
-//            } else {
-//                if ($lot['price'] <= 0) {
-//                    $errors['price'][] = 'Это должно быть положительное число';
-//                }
-//            }
-//        }
-//        if (empty($lot['step'])) {
-//            $errors['step'][] = 'Введите шаг ставки';
-//        } else {
-//            if (!is_numeric($lot['step'])) {
-//                $errors['step'][] = 'Введите шаг ставки';
-//            }
-//        }
-//        if (empty($lot['date'])) {
-//            $errors['date'][] = 'Введите дату окончания лота';
-//        }
-//        if ($errors === $empty_errors) {
-//            return renderTemplate('templates/lot.php', compact('lot' , 'step'));
-//        } else {
-//            return renderTemplate('templates/add-lot.php', compact('lot', 'errors'));
-//        }
-//    } else {
-//        return renderTemplate('templates/add-lot.php', compact('lot', 'errors'));
-//    }
-//}

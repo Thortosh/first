@@ -10,7 +10,7 @@
  *
  */
 ?>
-<form name="" class="form form--add-lot container form--invalid" action="index.php?mode=add" method="POST">
+<form name="" class="form form--add-lot container form--invalid" action="index.php" method="POST">
     <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <div class="form__container-two">

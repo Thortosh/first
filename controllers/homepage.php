@@ -1,8 +1,11 @@
 <?php
 
-function homepage($catalog, $categories)
+
+function homepage()
 {
-   return renderTamplate('templates/index.php', [
+    $categories = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное',];
+    $catalog = include 'arr.php';
+    return renderTamplate('templates/index.php', [
         'catalog' => $catalog,
         'categories' => $categories
     ]);

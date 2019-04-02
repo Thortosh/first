@@ -60,5 +60,12 @@ forms
 
         header("Location: http://www.yourwebsite.com/pages/success.php")  redirect('/pages/success.php')
 
+== базы данных ==
+таблицы под каталог, категории, пользователей и ставок
+sql: select, insert, update, delete
+     условия where: is, not, (i)like, in
+     дополнительно: order by, limit, offset, count, distinct
 
-
+     отложить join пока не заработает поиск
+     после последнего дз должен уметь в индексы
+     особый вопрос: как ускорить поиск по выражению "*@gmail.ru"

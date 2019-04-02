@@ -3,11 +3,14 @@
         <section class="lots">
             <h2>Результаты поиска по запросу «<span>Union</span>»</h2>
             <ul class="lots__list">
+                <!-- foreach result as item -->
                 <li class="lots__item lot">
                     <div class="lot__image">
+                        <!--  item image  -->
                         <img src="img/lot-1.jpg" width="350" height="260" alt="Сноуборд">
                     </div>
                     <div class="lot__info">
+                        <!-- item category -->
                         <span class="lot__category">Доски и лыжи</span>
                         <h3 class="lot__title"><a class="text-link" href="../templates/lot.php">2014 Rossignol District
                                 Snowboard</a></h3>
@@ -22,6 +25,7 @@
                         </div>
                     </div>
                 </li>
+                <!-- endforeach -->
                 <li class="lots__item lot">
                     <div class="lot__image">
                         <img src="img/lot-2.jpg" width="350" height="260" alt="Сноуборд">

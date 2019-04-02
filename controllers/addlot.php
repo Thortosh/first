@@ -54,6 +54,11 @@ function addlot()
     $errors = [];                                                                   // пустой массив с ошибками
     $data = [];                                                                     // пустой массив с ошибками
 
+    //если пользователь не пользователь - 403 иди на хуй
+    if (!isset($_SESSION['user'])){
+        redirect('index.php');
+    }
+
     $required_validation_rules = get_lot_form_required_validation_rules();          // определяем функцию которая возвращает массив с ошибками
     $numeric_validation_rules = get_lot_form_numeric_validation_rules();
     $get_lot_form_date_validation_rules = get_lot_form_date_validation_rules();

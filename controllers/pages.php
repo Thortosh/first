@@ -14,13 +14,17 @@ function pages($mode)
             include 'addlot.php';
             return addlot();
             break;
-        case 'all':
-            include 'alllots.php';
-            return alllots();
+        case 'history':
+            include 'history.php';
+            return history();
             break;
         case 'login':
-            include 'registration.php';
+            include 'login.php';
             return login();
+            break;
+        case 'logoff':
+            include 'logoff.php';
+            return logoff();
             break;
         case 'signup':
             include 'signup.php';

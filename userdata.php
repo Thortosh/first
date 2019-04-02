@@ -1,7 +1,7 @@
 <?php
 
 // пользователи для аутентификации
-$users = [
+return [
     [
         'email' => 'ignat.v@gmail.com',
         'name' => 'Игнат',

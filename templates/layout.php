@@ -27,18 +27,23 @@ $categories
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
-        <a class="main-header__add-lot button" href="index.php?mode=add">Добавить лот</a>
+        <? if (isset($user['name'])): ?>
+            <a class="main-header__add-lot button" href="index.php?mode=add">Добавить лот</a>
+            <!--        ограниченная кнопка-->
+        <? endif; ?>
 
         <nav class="user-menu">
 
-
-            <? if ($is_auth == true): ?>
-                <div class="user-menu__image">
-                    <img src="<?= $user_avatar; ?>" width="40" height="40" alt="Пользователь">
-                </div>
-                <div class="user-menu__logged">
-                    <p><?= htmlspecialchars($user_name) ?></p>
-                </div>
+            <? if (isset($user['name'])): ?>
+                <a>[<?= htmlspecialchars($user['name']) ?>]</a>
+                <ul class="user-menu__list">
+                    <li class="user-menu__item">
+                        <a href="index.php?mode=history">История</a>
+                    </li>
+                    <li class="user-menu__item">
+                        <a href="index.php?mode=logoff">Выход</a>
+                    </li>
+                </ul>
             <? else: ?>
                 <ul class="user-menu__list">
                     <li class="user-menu__item">
@@ -65,7 +70,7 @@ $categories
                 <li class="nav__item">
                     <a href="index.php?mode=all"><?= $val; ?></a>
                 </li>
-                <? endforeach; ?>
+            <? endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">

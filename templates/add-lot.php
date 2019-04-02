@@ -10,7 +10,7 @@
  *
  */
 ?>
-<form name="" class="form form--add-lot container form--invalid" action="index.php" method="POST">
+<form name="" class="form form--add-lot container form--invalid" action="index.php?mode=add" method="POST">
     <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <div class="form__container-two">
@@ -41,7 +41,8 @@
     </div>
     <div class="form__item <?= key_exists('message', $errors) ? 'form__item--invalid' : '' ?>">
         <label for="message">Описание</label>
-        <textarea id="message" name="message" placeholder="Напишите описание лота"><?= $data['message'] ?? '' ?></textarea>
+        <textarea id="message" name="message"
+                  placeholder="Напишите описание лота"><?= $data['message'] ?? '' ?></textarea>
         <? if (key_exists('message', $errors)): ?>
             <span class="form__error"><?= $errors['message'] ?></span>
         <? endif; ?>
@@ -64,7 +65,7 @@
     <div class="form__container-three">
         <div class="form__item form__item--small <?= key_exists('lot-rate', $errors) ? 'form__item--invalid' : '' ?>">
             <label for="lot-rate">Начальная цена</label>
-            <input id="lot-rate" type="text"  value="<?= $data['lot-rate'] ?? '' ?>" name="lot-rate" placeholder="0">
+            <input id="lot-rate" type="text" value="<?= $data['lot-rate'] ?? '' ?>" name="lot-rate" placeholder="0">
             <? if (key_exists('lot-rate', $errors)): ?>
                 <span class="form__error"><?= $errors['lot-rate'] ?></span>
             <? endif; ?>
@@ -78,7 +79,8 @@
         </div>
         <div class="form__item  <?= key_exists('lot-date', $errors) ? 'form__item--invalid' : '' ?>">
             <label for="lot-date">Дата окончания торгов</label>
-            <input class="form__input-date" id="lot-date" value="<?= $data['lot-date'] ?? '' ?>" type="date" name="lot-date">
+            <input class="form__input-date" id="lot-date" value="<?= $data['lot-date'] ?? '' ?>" type="date"
+                   name="lot-date">
             <? if (key_exists('lot-date', $errors)): ?>
                 <span class="form__error"><?= $errors['lot-date'] ?></span>
             <? endif; ?>
@@ -89,11 +91,3 @@
     <?php endif; ?>
     <button type="submit" class="button">Добавить лот</button>
 </form>
-<? // if ($_SERVER['REQUEST_METHOD'] = 'POST') : ?>
-<!--    --><? // header("Location: /index.php?success=true"); ?>
-<? // endif; ?>
-<!--// if (isset($_GET['success'])): ?>
-<!--<div class "alert alert-success">-->
-<!----<p>Спасибо за Ваше сообщение!</p>-->
-<!----</div>-->
-<!--// endif; -->

@@ -3,12 +3,12 @@
 
 
 return [
-    [
-        'id' => 0,
-        'title' => 'Доски и лыжи',
+    [ // добавить поля из ДЗ6 задание 2 и статус (открыто/закрыто)
+        'id' => 0, //integer primary unique
+        'title' => 'Доски и лыжи', // string, varchar()
         'name' => '2014 Rossignol District Snowboard',
         'path' => '/img/lot-1.jpg',
-        'price' => '10999',
+        'price' => '10999', // integer, float, double ...
         'message' =>'Описание лота'
     ],
     [

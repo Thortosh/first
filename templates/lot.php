@@ -1,3 +1,9 @@
+<?php
+
+
+?>
+
+
 <section class="lot-item container">
     <h2><?= $lot['name']; ?></h2>
     <div class="lot-item__content">

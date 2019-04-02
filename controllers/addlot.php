@@ -22,7 +22,7 @@ function is_date($date_string)                      // Функция для п�
     }
 }
 
-function get_lot_form_required_validation_rules()       // Возвращает тексты ошибок для пустых полей.
+function get_validation_rules()       // Возвращает тексты ошибок для пустых полей.
 {
     return [
         'lot-name' => 'Введите имя лота',
@@ -30,22 +30,7 @@ function get_lot_form_required_validation_rules()       // Возвращает 
         'message' => 'Введите описание лота',
         'lot-rate' => 'Введите начальную цену',
         'lot-step' => 'Введи шаг ставки',
-        'lot-date' => 'Введите дату окончания лота'
-    ];
-}
-
-function get_lot_form_numeric_validation_rules()
-{
-    return [
-        'lot-rate' => 'Введите начальную цену',
-        'lot-step' => 'Введите шаг ставки'
-    ];
-}
-
-function get_lot_form_date_validation_rules()
-{
-    return [
-        'lot-date' => 'Введите дату'
+        'lot-date' => 'Введите дату окончания лота',
     ];
 }
 
@@ -59,24 +44,14 @@ function addlot()
         redirect('index.php');
     }
 
-    $required_validation_rules = get_lot_form_required_validation_rules();          // определяем функцию которая возвращает массив с ошибками
-    $numeric_validation_rules = get_lot_form_numeric_validation_rules();
-    $get_lot_form_date_validation_rules = get_lot_form_date_validation_rules();
-
+    $rules = get_validation_rules();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {                                    // Если метод для запроса страницы POST
         $data = $_POST;                                                             // Переменная date содержит переданный ассоциативный массив данных
         foreach ($data as $key => $value) {
-            if (empty($value) && isset($required_validation_rules[$key])) {         // Empty возвращает true если переменная пустая
-                $errors[$key] = $required_validation_rules[$key];                   // записываем в массив errors содержимое массива $empty_field_error_texts.
-            }
-            if (!is_numeric($value) && isset($numeric_validation_rules[$key])) {
-                $errors[$key] = $numeric_validation_rules[$key];
-            }
-            if (!is_date($value) && isset($get_lot_form_date_validation_rules[$key])) {
-                $errors[$key] = $get_lot_form_date_validation_rules[$key];
+            if (empty($value) && isset($rules[$key])) {         // Empty возвращает true если переменная пустая
+                $errors[$key] = $rules[$key];                   // записываем в массив errors содержимое массива $empty_field_error_texts.
             }
         }
-
     }
     return renderTamplate('templates/add-lot.php', compact('errors', 'data'));
 }

@@ -1,12 +1,3 @@
-<!--
-$title
-$is_auth
-$user_avatar
-$user_name
-$content
-$categories
--->
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -16,7 +7,6 @@ $categories
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
@@ -29,18 +19,17 @@ $categories
         </form>
         <? if (isset($user['name'])): ?>
             <a class="main-header__add-lot button" href="index.php?mode=add">Добавить лот</a>
-            <!--        ограниченная кнопка-->
         <? endif; ?>
-
         <nav class="user-menu">
-
-            <? if (isset($user['name'])): ?>
-                <a>[<?= htmlspecialchars($user['name']) ?>]</a>
+            <? if (isset($user['name']) || isset($user['email'])): ?>
                 <ul class="user-menu__list">
-                    <li class="user-menu__item">
+                    <li class="user-menu__list">
+                        <a><?= htmlspecialchars($user['name'] ?? $user['email']) ?></a>
+                    </li>
+                    <li class="user-menu__list">
                         <a href="index.php?mode=history">История</a>
                     </li>
-                    <li class="user-menu__item">
+                    <li class="user-menu__list">
                         <a href="index.php?mode=logoff">Выход</a>
                     </li>
                 </ul>
@@ -54,18 +43,17 @@ $categories
                     </li>
                 </ul>
             <? endif; ?>
-
-
         </nav>
     </div>
 </header>
 
-<main class="container"><?= $content; ?></main>
+<main class="container">
+    <?= $content; ?>
+</main>
 
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-
             <? foreach ($categories as $key => $val) : ?>
                 <li class="nav__item">
                     <a href="index.php?mode=all"><?= $val; ?></a>
@@ -125,6 +113,5 @@ $categories
         </div>
     </div>
 </footer>
-
 </body>
 </html>

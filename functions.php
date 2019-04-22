@@ -8,7 +8,6 @@ function renderTamplate($a, $b)
         extract($b);
         require_once("$a");
         return ob_get_clean();
-
     }
 }
 
@@ -29,4 +28,3 @@ function redirect($a)
     exit();
 }
 
-//redirect('index.php?mode=all');

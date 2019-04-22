@@ -1,8 +1,5 @@
 <?php
-/**
- * @var array $catalog
- * @return string
- */
+
 function search()
 {
     $searchPhrase = $_POST['search'];

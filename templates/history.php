@@ -1,32 +1,3 @@
-<? // //var_dump($_COOKIE['visitcount']);
-//
-//
-//if (isset($_COOKIE['visitcount'])) {
-//    $cookie = $_COOKIE['visitcount'];
-//    $explodecookie = explode(",", $cookie);
-//    $countcookie = count($explodecookie);
-//    //var_dump($explodecookie);
-//    //var_dump($countcookie);
-//    //var_dump($catalog[0]);
-//    //print_r(array_intersect($explodecookie, $catalog));
-//    $i = 0;
-//    while ($i < $countcookie) {
-//        foreach ($explodecookie as $item => $value) {
-//            if ($value >= $i) {
-//                foreach ($catalog as $index => $var) {
-//                    if ($index == $value) {
-//                        print_r($index);
-//                    }
-//                }
-//            }
-//        }
-//        $i++;
-//    }
-//
-//}
-
-/** @var array $catalog */
-?>
 <main>
     <div class="container">
         <section class="lots">
@@ -45,7 +16,7 @@
                                          alt="Сноуборд">
                                 </div>
                                 <div class="lot__info">
-                                    <span class="lot__category"><?= $var['title']; ?></span>
+                                    <span class="lot__category"><?= $var['category_name']; ?></span>
                                     <h3 class="lot__title">
                                         <a class="text-link" href="index.php?mode=lot&lot_id=<?= $var['id']; ?>">
                                             <?= $var['name'] ?>
@@ -55,7 +26,7 @@
                                         <div class="lot__rate">
                                             <span class="lot__amount">Стартовая цена</span>
                                             <span class="lot__cost">
-                                                    <?= price_ceil($var['price']); ?>
+                                                    <?= price_ceil($var['startprice']); ?>
                                                     <b class="rub">р</b>
                                                 </span>
                                         </div>

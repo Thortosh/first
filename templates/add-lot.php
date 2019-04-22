@@ -11,11 +11,9 @@
  */
 ?>
 <form name="" class="form form--add-lot container form--invalid" action="index.php?mode=add" method="POST">
-    <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <div class="form__container-two">
         <div class="form__item <?= key_exists('lot-name', $errors) ? 'form__item--invalid' : '' ?> ">
-            <!-- form__item--invalid -->
             <label for="lot-name">Наименование</label>
             <input id="lot-name" type="text" name="lot-name" placeholder="Введите наименование лота"
                    value="<?= $data['lot-name'] ?? '' ?>">

@@ -1,5 +1,5 @@
 <?php
-function pages($mode)
+function  pages($mode)
 {
     switch ($mode) {
         case 'index':

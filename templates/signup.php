@@ -1,25 +1,38 @@
 <main>
-    <form class="form container" action="https://echo.htmlacademy.ru" method="post"> <!-- form--invalid -->
+    <form class="form container" action="" method="post"> <!-- form--invalid -->
         <h2>Регистрация нового аккаунта</h2>
-        <div class="form__item"> <!-- form__item--invalid -->
+        <div class="form__item <?= key_exists('email', $errors) ? 'form__item--invalid' : '' ?>">
+
             <label for="email">E-mail*</label>
-            <input id="email" type="text" name="email" placeholder="Введите e-mail" required>
-            <span class="form__error">Введите e-mail</span>
+            <input id="email" type="text" name="email" placeholder="Введите e-mail"
+                   value="<?= $data['email'] ?? '' ?>">
+            <? if (key_exists('email', $errors)) : ?>
+                <span class="form__error"><?= $errors['email'] ?></span>
+            <? endif; ?>
         </div>
-        <div class="form__item">
+        <div class="form__item <?= key_exists('password', $errors) ? 'form__item--invalid' : '' ?>">
             <label for="password">Пароль*</label>
-            <input id="password" type="text" name="password" placeholder="Введите пароль" required>
-            <span class="form__error">Введите пароль</span>
+            <input id="password" type="text" name="password" placeholder="Введите пароль"
+                   value="<?= $data['password'] ?? '' ?>">
+            <? if (key_exists('password', $errors)) : ?>
+                <span class="form__error">Введите пароль</span>
+            <? endif; ?>
         </div>
-        <div class="form__item">
+        <div class="form__item <?= key_exists('name', $errors) ? 'from__item--invalid' : '' ?> ">
             <label for="name">Имя*</label>
-            <input id="name" type="text" name="name" placeholder="Введите имя" required>
-            <span class="form__error">Введите имя</span>
+            <input id="name" type="text" name="name" placeholder="Введите имя"
+                   value="<?= $data['name'] ?? '' ?>">
+            <? if (key_exists('name', $errors)) : ?>
+                <span class="form__error">Введите имя</span>
+            <? endif; ?>
         </div>
-        <div class="form__item">
+        <div class="form__item <?= key_exists('contact', $errors) ? 'form__item--invalid' : '' ?>">
             <label for="message">Контактные данные*</label>
-            <textarea id="message" name="message" placeholder="Напишите как с вами связаться" required></textarea>
-            <span class="form__error">Напишите как с вами связаться</span>
+            <textarea id="contact" name="contact"
+                      placeholder="Напишите как с вами связаться"><?= $data['contact'] ?? '' ?> </textarea>
+            <? if (key_exists('contact', $errors)) : ?>
+                <span class="form__error">Напишите как с вами связаться</span>
+            <? endif; ?>
         </div>
         <div class="form__item form__item--file form__item--last">
             <label>Аватар</label>

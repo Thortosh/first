@@ -1,11 +1,4 @@
 <?php
-/**
- * $lot
- * $empty_errors
- * $errors
- *
- *
- */
 
 function is_date($date_string)                      // Функция для проверки даты
 {
@@ -39,7 +32,7 @@ function addlot()
     $errors = [];                                                                   // пустой массив с ошибками
     $data = [];                                                                     // пустой массив с ошибками
 
-    //если пользователь не пользователь - 403 иди на хуй
+    //если пользователь не пользователь - 403
     if (!isset($_SESSION['user'])){
         redirect('index.php');
     }

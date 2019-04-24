@@ -85,7 +85,7 @@ WHERE l.statuslot = 'open'
 */
 
 SELECT c.name, categories_id, userdata_id, bets_id, l.name, path, startprice, description, statuslot FROM lots l
-JOIN categories c ON l.categories_id = c.id
+JOIN categories c ON l.categories_id = c.+
 WHERE l.id = 4 ;
 
 /*

@@ -2,7 +2,7 @@
 
 function viewlot()
 {
-    $bets = include 'bets.php';
+    include 'bets.php';
     include 'arr.php';                      // подключаем бд
     $lot = null;                            //  записываем в переменную $lot значение null
     if (!isset($_GET['lot_id'])) {          // Если глобальная переменная не определена, тогда ошибка
@@ -16,6 +16,30 @@ function viewlot()
             break;
         }
     }
+
+    foreach ($bets as $key => $value) {
+        if ($value['lots_id'] == $lot_id) {
+            $price = $value['price'];
+            $lot_step = $value['lot_step'];
+        }
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {                                    // Если метод для запроса страницы POST
+    $data = $_POST;
+    foreach ($data as $key => $value){
+        $one = $price ? $price + $lot_step : $lot_step;
+        if ($data > $one ){
+            echo 'da';
+            var_dump($data);
+        }
+
+    }
+    //var_dump($data);
+
+    }
+
+
+
+
     if (isset($_SESSION['user'])) {
         $visitcount = array_key_exists('visitcount', $_COOKIE) ? explode(',', $_COOKIE['visitcount']) : [];
         // если в массиве COOKIE присутствует указанный ключ visitcoun, тогда записываем в переменную $visitcount массив, иначе записываем пустой массив
@@ -32,5 +56,5 @@ function viewlot()
             return 'not found';
         }
     }
-    return renderTamplate('templates/lot.php', compact('lot', 'bets'));
+    return renderTamplate('templates/lot.php', compact('lot', 'bets', 'lot_id', 'price','lot_step'));
 }

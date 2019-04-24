@@ -9,6 +9,8 @@
  *  lot-date - дата завершения торгов
  *
  */
+
+
 ?>
 <form name="" class="form form--add-lot container form--invalid" action="index.php?mode=add" method="POST">
     <h2>Добавление лота</h2>
@@ -24,13 +26,9 @@
         <div class="form__item <?= key_exists('category', $errors) ? 'form__item--invalid' : '' ?>">
             <label for="category">Категория</label>
             <select id="category" name="category">
-                <option></option>
-                <option>Доски и лыжи</option>
-                <option>Крепления</option>
-                <option>Ботинки</option>
-                <option>Одежда</option>
-                <option>Инструменты</option>
-                <option>Разное</option>
+                <? foreach ($categories as $key => $value) : ?>
+                    <option><?= $value['name']; ?></option>
+                <? endforeach; ?>
             </select>
             <? if (key_exists('category', $errors)): ?>
                 <span class="form__error"><?= $errors['category'] ?></span>
@@ -87,5 +85,5 @@
     <?php if (count($errors) > 0): ?>
         <span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>
     <?php endif; ?>
-    <button type="submit" class="button">Добавить лот</button>
+    <button type="submit" class="button"Добавить лот</button>
 </form>

@@ -33,7 +33,7 @@ function viewlot()
         }
 
     }
-    //var_dump($data);
+
 
     }
 

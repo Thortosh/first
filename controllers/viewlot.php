@@ -17,27 +17,32 @@ function viewlot()
         }
     }
 
-    foreach ($bets as $key => $value) {
-        if ($value['lots_id'] == $lot_id) {
-            $price = $value['price'];
+    foreach ($bets as $key => $value) {     // Проходимся по полученным данным из бд
+        if ($value['id'] == $lot_id) {      // определяем lot_id
+            $price = $value['price'];       // запи
             $lot_step = $value['lot_step'];
         }
     }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {                                    // Если метод для запроса страницы POST
-    $data = $_POST;
-    foreach ($data as $key => $value){
-        $one = $price ? $price + $lot_step : $lot_step;
-        if ($data > $one ){
-            echo 'da';
-            var_dump($data);
+        $data = $_POST;
+        foreach ($data as $key => $value) {
+            $one = isset($price) ? $price + $lot_step : $lot['startprice'] + $lot_step;
+            $cost = $value;
+            echo $price;
+            if ($cost >= $one) {
+
+                $user_id = ($_SESSION['user']['id']);
+
+                $sql = "INSERT INTO bets SET
+                userdata_id = '$user_id',
+                lots_id = '$lot_id',
+                price = '$cost'";
+                $result = mysqli_query($con, $sql);
+                echo 'da';
+            }
         }
-
     }
-
-
-    }
-
-
 
 
     if (isset($_SESSION['user'])) {
@@ -56,5 +61,5 @@ function viewlot()
             return 'not found';
         }
     }
-    return renderTamplate('templates/lot.php', compact('lot', 'bets', 'lot_id', 'price','lot_step'));
+    return renderTamplate('templates/lot.php', compact('lot', 'bets', 'lot_id', 'price', 'lot_step'));
 }

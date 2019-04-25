@@ -1,4 +1,4 @@
-<? //var_dump($_POST); ?>
+<? //var_dump($lot_step); ?>
 <section class="lot-item container">
     <h2><?= $lot['name']; ?></h2>
     <div class="lot-item__content">
@@ -20,14 +20,14 @@
                         <span class="lot-item__cost"><?= $price ?? $lot['startprice'] ?></span>
                     </div>
                     <div class="lot-item__min-cost">
-                        Мин. ставка <span><?= empty($price) ? $lot_step : $price + $lot_step; ?></span>
+                        Мин. ставка <span><?= empty($price) ? $lot['startprice']+$lot_step : $price + $lot_step; ?></span>
                     </div>
                 </div>
                 <form class="lot-item__form" action="" method="post">
                     <p class="lot-item__form-item">
                         <label for="cost">Ваша ставка</label>
                         <input id="cost" type="number" name="cost"
-                               placeholder="<?= empty($price) ? $lot_step : $price + $lot_step; ?>"
+                               placeholder="<?= empty($price) ? $lot['startprice']+$lot_step : $price + $lot_step; ?>"
                                value="<?= $data ?? ''; ?>">
                     </p>
                     <button type="submit" class="button">Сделать ставку</button>

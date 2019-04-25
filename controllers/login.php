@@ -22,7 +22,7 @@ function login()                                       // Функция для 
             $required = ['email', 'password'];                              // начинаем валидацию
 
             $con = mysqli_connect("localhost", "root", "", "yeti");                      // Устанавливает новое соединение с сервером MySQL
-            $sql = "SELECT email, name, password FROM userdata";                         // Тело запроса
+            $sql = "SELECT id,email, name, password FROM userdata";                         // Тело запроса
             $result = mysqli_query($con, $sql);                                          // Выполняет запрос к базе данных. Объект результата
             $user = mysqli_fetch_all($result, MYSQLI_ASSOC);                             // Преобразуем объект результата в двумерный массив с записями
 

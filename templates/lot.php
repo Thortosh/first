@@ -38,7 +38,7 @@
 
                 as $key => $value) : ?>
                 <? if ($value['lots_id'] == $lot_id) : ?>
-                <!--                <h3>История ставок (<span>--><? //= count($value['lots_id']) ?><!--</span>)</h3>-->
+<!--                                <h3>История ставок (<span>--><?////= count($value['lots_id']) ?><!--</span>)</h3>-->
                 <table class="history__list">
                     <tr class="history__item">
                         <td class="history__name"><?= $value['name']; ?></td>

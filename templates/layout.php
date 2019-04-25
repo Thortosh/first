@@ -32,6 +32,9 @@
                     <li class="user-menu__list">
                         <a href="index.php?mode=logoff">Выход</a>
                     </li>
+                    <li class="user-menu__list">
+                        <a href="index.php?mode=mylots">Мои лоты</a>
+                    </li>
                 </ul>
             <? else: ?>
                 <ul class="user-menu__list">
